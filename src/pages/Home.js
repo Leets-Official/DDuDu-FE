@@ -49,7 +49,7 @@ const Home = () => {
 
     return <>
         <MyHeader headText={'DDuDu List'}
-            rightChild={<MyMenu />} />
+            leftChild={localStorage.getItem('name')} rightChild={<MyMenu />} />
         <MyHeader headText={moment(curDate).format().slice(0, 10)}
             rightChild={<MyButton text={'변경'} onClick={handleCalendar} />} />
             {isVisibleCalendar &&

@@ -4,9 +4,6 @@ import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import React, { useReducer, useRef, useState } from 'react';
 
 import Home from './pages/Home';
-import Edit from './pages/Edit';
-import Diary from './pages/Diary';
-import New from './pages/New';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 
@@ -134,9 +131,6 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/edit/:id" element={<Edit />} />
-                <Route path="/diary/:id" element={<Diary />} />
-                <Route path="/new" element={<New />} />
               </Routes>
             </div>
           </BrowserRouter>

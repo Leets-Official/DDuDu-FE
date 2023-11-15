@@ -11,7 +11,7 @@ const MyMenu = () => {
         <div onClick={showSubMenu} className='MyMenu'>
             <img src={process.env.PUBLIC_URL + '/assets/icons8-메뉴-50.png'} />
             {isSubMenuVisible && (
-                <div>
+                <div className='mysubmenu'>
                     <button>마이페이지</button>
                     <button>로그아웃</button>
                 </div>

@@ -485,3 +485,18 @@ input[type="checkbox"] {
   font-family: 'Jua', sans-serif;
   font-size: 18px;
 }
+
+.MyMenu {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.MyMenu img {
+  display: flex;
+  width: 40px;
+}
+
+.mysubmenu {
+  display: flex;
+  flex-direction: column;
+}
