@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MyHeader from '../components/MyHeader';
 import MyButton from '../components/MyButton';
@@ -12,10 +12,30 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [checkDup, setCheckDup] = useState(false);
   const navigate = useNavigate();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const usernameRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email !== "" && password !== "" && username !== "" && checkDup === true) {
+
+    if (email.length < 1) {
+      window.alert('이메일을 입력해주세요.');
+      emailRef.current.focus();
+      return ;
+    }
+    if (password.length < 1) {
+      window.alert('패스워드를 입력해주세요.');
+      passwordRef.current.focus();
+      return ;
+    }
+    if (username.length < 1) {
+      window.alert('유저네임을 입력해주세요.');
+      usernameRef.current.focus();
+      return ;
+    }
+
+    if (checkDup === true) {
       const signUpResponse = await axios.post('http://43.201.114.147:8080/signup', { email, password, username });
       console.log(signUpResponse)
       if (signUpResponse.data === 'Success') {
@@ -27,6 +47,13 @@ const SignUp = () => {
 
   const handleDuplication = async (e) => {
     e.preventDefault();
+
+    if (email.length < 1) {
+      window.alert('이메일을 입력해주세요.');
+      emailRef.current.focus();
+      return ;
+    }
+
     const duplicationResponse = await axios.post('http://43.201.114.147:8080/signup/email-check', { email });
     if (duplicationResponse.data) {
       window.alert('아이디가 중복입니다 :(')
@@ -44,16 +71,16 @@ const SignUp = () => {
         <h1>회원가입</h1>
         <section>
           <h4>EMAIL</h4>
-          <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} />
+          <input ref={emailRef} type='text' name='email' onChange={(e) => setEmail(e.target.value)} />
         </section>
-        <button onClick={handleDuplication}>중복 확인</button>
+        <button onClick={handleDuplication}>이메일 중복 확인</button>
         <section>
           <h4>PASSWORD</h4>
-          <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
+          <input ref={passwordRef} type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
         </section>
         <section>
           <h4>USERNAME</h4>
-          <input type='text' name='username' onChange={(e) => setUsername(e.target.value)} />
+          <input ref={usernameRef} type='text' name='username' onChange={(e) => setUsername(e.target.value)} />
         </section>
         <button onClick={handleSubmit}>회원가입</button>
       </div>

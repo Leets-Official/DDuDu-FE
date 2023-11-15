@@ -67,28 +67,22 @@ const DiaryItem = ({ id, completed, content, date }) => {
                     <input type="checkbox" onClick={handleCheckbox} checked={completed} />
                 </div>
                 <div className="info_wrapper">
-                    <div className="diary_date">
-                        {id}
-                    </div>
-                    <div className="diary_date">
-                        {strDate}
-                    </div>
                     <div className="diary_content_preview">
                         {content}
                     </div>
                 </div>
+                {isSubMenuVisible && (
+                    <div className="submenu">
+                        <button onClick={handleEdit}>수정</button>
+                        <button onClick={handleDelete}>삭제</button>
+                    </div>
+                )}
                 <div className="btn_wrapper">
                     <button onClick={toggleSubMenu} className="ddudu_button">. . .</button>
-                    {isSubMenuVisible && (
-                        <div className="submenu">
-                            <button onClick={handleEdit}>수정</button>
-                            <button onClick={handleDelete}>삭제</button>
-                        </div>
-                    )}
                 </div>
             </div>
             <div className="MenuForm">
-                {isEdit ? <MenuForm id={id} content={content} onClick={handleEdit} /> : null}
+                {isEdit && <MenuForm id={id} content={content} onClick={handleEdit} />}
             </div>
         </>
     );

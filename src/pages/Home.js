@@ -43,6 +43,13 @@ const Home = () => {
         }
     }, [state.data, curDate])
 
+    useEffect(() => {
+        if (!localStorage.getItem('name')) {
+            window.alert('로그인이 필요합니다.');
+            navigate('/login');
+        }
+    }, []);
+
     const handleCalendar = () => {
         setIsVisibleCalendar(!isVisibleCalendar);
     }
