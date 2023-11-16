@@ -36,7 +36,7 @@ const SignUp = () => {
     }
 
     if (checkDup === true) {
-      const signUpResponse = await axios.post('http://43.201.114.147:8080/signup', { email, password, username });
+      const signUpResponse = await axios.post('https://43.201.114.147:8080/signup', { email, password, username });
       console.log(signUpResponse)
       if (signUpResponse.data === 'Success') {
         window.alert('회원가입이 완료되었습니다');
@@ -54,7 +54,7 @@ const SignUp = () => {
       return ;
     }
 
-    const duplicationResponse = await axios.post('http://43.201.114.147:8080/signup/email-check', { email });
+    const duplicationResponse = await axios.post('https://43.201.114.147:8080/signup/email-check', { email });
     if (duplicationResponse.data) {
       window.alert('아이디가 중복입니다 :(')
     } else {
