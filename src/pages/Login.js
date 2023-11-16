@@ -11,7 +11,7 @@ const Login = () => {
   const passwordRef = useRef();
 
   const axiosData = async () => {
-    const response = await axios.get('https://43.201.114.147:8080/login');
+    const response = await axios.get('http://43.201.114.147:8080/login');
     console.log(response)
   }
 
